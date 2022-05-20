@@ -1,0 +1,507 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "contract_paused",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "failed",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "paymentReferenceID",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "_payer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "_paymentTokenType",
+						"type": "string"
+					}
+				],
+				"name": "Paid",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "receiveEth",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "receiveUsdt",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "receiveDai",
+						"type": "address"
+					}
+				],
+				"name": "addMerchant",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_tokenName",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "_tokenAddress",
+						"type": "address"
+					}
+				],
+				"name": "addToSupportedTokens",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "changeDaiAddress",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "changeEthAddress",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "changeUsdtAddress",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "continueContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "count",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_paymentReferenceID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_merchantId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_paymentTokenType",
+						"type": "string"
+					}
+				],
+				"name": "makePaymentDai",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "paymentReferenceID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "paymentToken",
+						"type": "string"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_paymentReferenceID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_merchantId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_paymentTokenType",
+						"type": "string"
+					}
+				],
+				"name": "makePaymentUsdt",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "paymentReferenceID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "paymentToken",
+						"type": "string"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "numberOfTransactions",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pauseContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "supportedTokens",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_paymentTokenType",
+						"type": "string"
+					}
+				],
+				"name": "withdrawDai",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_paymentTokenType",
+						"type": "string"
+					}
+				],
+				"name": "withdrawUsdt",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"addMerchant(address,address,address)": {
+					"details": "its assumed users can use the platform without perission from owner hence, no onlyOwner modifier",
+					"params": {
+						"receiveDai": "Dai address",
+						"receiveEth": "Ethereum address",
+						"receiveUsdt": "Usdt address"
+					}
+				},
+				"changeDaiAddress(uint256,address)": {
+					"params": {
+						"addr": "new dai address",
+						"id": "merchants id"
+					}
+				},
+				"changeEthAddress(uint256,address)": {
+					"params": {
+						"addr": "new Eth address",
+						"id": "merchants id"
+					}
+				},
+				"changeUsdtAddress(uint256,address)": {
+					"params": {
+						"addr": "new Usdt address",
+						"id": "merchants id"
+					}
+				},
+				"constructor": {
+					"details": "initializes owner and owner stte variables"
+				},
+				"continueContract()": {
+					"details": "only owner has access"
+				},
+				"numberOfTransactions(uint256)": {
+					"params": {
+						"id": "merchants id"
+					}
+				},
+				"pauseContract()": {
+					"details": "only owner has access"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"addMerchant(address,address,address)": {
+					"notice": "adds new merchant to contract"
+				},
+				"changeDaiAddress(uint256,address)": {
+					"notice": "changes merchants dai address"
+				},
+				"changeEthAddress(uint256,address)": {
+					"notice": "changes merchants Eth address"
+				},
+				"changeUsdtAddress(uint256,address)": {
+					"notice": "changes merchants Usdt address"
+				},
+				"constructor": {
+					"notice": "Will execute on deployment"
+				},
+				"continueContract()": {
+					"notice": "continues contract functions"
+				},
+				"numberOfTransactions(uint256)": {
+					"notice": "shows the number of transactions a merchants has processed"
+				},
+				"pauseContract()": {
+					"notice": "pauses contract functions"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Payment.sol": "Payment"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Payment.sol": {
+			"keccak256": "0xe08ee1a9344b04700da9b5bfae1c918a8c4076ad7a37ad4d0e898e7961748cc3",
+			"license": "Unlicense",
+			"urls": [
+				"bzz-raw://6d3bf810cdaf1139a508e6a91a040995ff6f1b177ea510f22574166439e78d8c",
+				"dweb:/ipfs/QmP6WJ9z81pXpBZEfsf61BxY2pZhiXd4wthjW6XFz6fwaU"
+			]
+		},
+		"hardhat/console.sol": {
+			"keccak256": "0x72b6a1d297cd3b033d7c2e4a7e7864934bb767db6453623f1c3082c6534547f4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a8cb8681076e765c214e0d51cac989325f6b98e315eaae06ee0cbd5a9f084763",
+				"dweb:/ipfs/QmNWGHi4zmjxQTYN3NMGnJd49jBT5dE4bxTdWEaDuJrC6N"
+			]
+		}
+	},
+	"version": 1
+}
