@@ -12,7 +12,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 /* @notice The owner is the address that deploys the contract*/
 contract CryptoToken is ERC20, Ownable {
-    constructor() ERC20("CryptoToken", "CTK") {}
+    constructor() ERC20("USDT", "USDT") {}
 
     /* 
     * @notice mints specified amount of tokens to an address.

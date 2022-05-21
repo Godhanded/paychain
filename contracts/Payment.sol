@@ -1,7 +1,6 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.5;
 
-import "hardhat/console.sol";
 
 /**
     * @notice Interface for all supported crypto payments tokens
@@ -42,11 +41,12 @@ contract Payment {
 
     address owner;
 
-    bool private contractState;
+    bool private contractState = true;
 
     uint256 public count;
     uint256 immutable decimals =10**18;
     uint256 private fee = 2;
+    uint256 contractbal;
 
 
     error failed(string);
@@ -208,7 +208,7 @@ contract Payment {
     }
     
     //pay in Usdt
-    function makePaymentUsdt(string memory _paymentReferenceID,uint256 _merchantId,uint256 _amount,string memory _paymentTokenType) external payable state returns(string memory paymentReferenceID,uint256 amount,string memory paymentToken) {
+    function makePaymentUsdt(string memory _paymentReferenceID,uint256 _merchantId,uint256 _amount,string memory _paymentTokenType) external state returns(string memory paymentReferenceID,uint256 amount,string memory paymentToken) {
     uint256 _realAmount = _amount*decimals;
 
     /** @dev public Instance of the payment token type*/
@@ -226,6 +226,7 @@ contract Payment {
     /**@dev calculate and subtract charges*/
     uint256 _charges = (fee *_realAmount)/100;
     uint256 _newAmount = _realAmount - _charges;
+    contractbal += _charges;
 
     /**@notice transfer payment tokens to merchant and contract liquidity pool respectively*/
     /**@dev send fees to token liquidity pool*/
@@ -238,7 +239,7 @@ contract Payment {
   }
   
   //pay in dai
-   function makePaymentDai(string memory _paymentReferenceID,uint256 _merchantId,uint256 _amount,string memory _paymentTokenType) external payable state returns(string memory paymentReferenceID,uint256 amount,string memory paymentToken) {
+   function makePaymentDai(string memory _paymentReferenceID,uint256 _merchantId,uint256 _amount,string memory _paymentTokenType) external state returns(string memory paymentReferenceID,uint256 amount,string memory paymentToken) {
     uint256 _realAmount = _amount*decimals;
 
     /** @dev public Instance of the payment token type*/
@@ -256,6 +257,7 @@ contract Payment {
     /**@dev calculate and subtract charges*/
     uint256 _charges = (fee *_realAmount)/100;
     uint256 _newAmount = _realAmount - _charges;
+    contractbal += _charges;
 
     /**@notice transfer payment tokens to merchant and contract liquidity pool respectively*/
     /**@dev send fees to token liquidity pool*/
@@ -302,6 +304,17 @@ contract Payment {
     function continueContract()external onlyOwner
     {
         contractState = true;
+    }
+
+
+    function ownerWithdraw(string calldata _paymentTokenType)external onlyOwner
+    {
+        IERC20 paymentTokenType = IERC20(supportedTokens[_paymentTokenType]);
+        uint256 bal = contractbal;
+        contractbal=0;
+        bool _sent =paymentTokenType.transfer(owner, bal);
+         require(_sent ,"Transaction failed! try again");
+
     }
 
 
